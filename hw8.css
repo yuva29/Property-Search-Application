@@ -1,0 +1,51 @@
+/* Large desktops and laptops */
+@media(min-width:992px) {
+	body { font-size: 14px; }
+}			
+/* Landscape phones and portrait tablets */
+@media (max-width: 991px) {
+	body { font-size: 13px; }
+	body .carousel-caption h4 {
+		font-size: 13px;
+	}
+	body .carousel-caption p {
+		font-size: 11px;
+	}				
+}
+.carousel-indicators {
+	left: 75%;
+	margin-left: 0px;
+	width: 25%;
+	bottom: 0px;
+}
+.carousel-caption {
+	right: 2px;
+	left: 2px;
+	bottom: 2px;
+}
+.carousel-caption h4{
+	margin-top: 6px;
+	margin-bottom: 3px;
+}
+.carousel-caption p {
+	margin: 0 0 15px;
+}
+a:link,a:visited,a:hover,a:active {
+	color:#f0ad4e;
+}
+.nav-tabs > li > a {
+	background-color: rgba(240, 173, 78, 0.75);
+	color: white;
+}
+body table{
+/*font-size: 13px;*/
+}
+.carousel-indicators .active {
+	background-color: #f0ad4e;
+}
+.carousel-indicators li {
+	border: 1px solid #f0ad4e;
+}
+body {
+	overflow-x: hidden;
+}

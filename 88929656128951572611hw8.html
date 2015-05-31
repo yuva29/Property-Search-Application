@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="hw8.css">
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Search Your Property Here</title>
+    </head>
+<body style="background-image:url('V0779-d9.jpg');background-repeat:no-repeat;background-size:cover;background-position: left top;background-attachment: fixed;">
+    <div class="container-fluid" style="padding-left:20px;padding-right:20px;height:100%">
+        <div class="page-header" style="overflow:auto">
+            <h3 style="color:#f0ad4e">Search Your Property Here</h3><br>
+            <form role="form" class="form-inline" id="realEstate">
+                <div class="form-group" style="margin-right:1em">
+                    <label for="streetAddress" style="color:#f0ad4e">Street Address<sup>*</sup>:</label>
+                    <input type="text" class="form-control" id="streetAddress" name="streetAddress" placeholder="Address" required>
+                    <p id="streetAddressErrorContainer" class="text-danger text-right" style="height:10px"></p>
+                </div>
+                <div class="form-group" style="margin-right:1em">
+                    <label for="city" style="color:#f0ad4e">City<sup>*</sup>:</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                    <p id="cityErrorContainer" class="text-danger text-right" style="height:10px"></p>
+                </div>
+                <div class="form-group" style="margin-right:1em">
+                    <label for="state" style="color:#f0ad4e">State<sup>*</sup>:</label>
+                    <select class="form-control" id="state" name="state" required>
+                        <option value='' selected></option><option value='AL'>AL</option><option value='AK'>AK</option><option value='AZ'>AZ</option><option value='AR'>AR</option><option value='CA'>CA</option><option value='CO'>CO</option><option value='CT'>CT</option><option value='DC'>DC</option><option value='DE'>DE</option><option value='FL'>FL</option><option value='GA'>GA</option><option value='HI'>HI</option><option value='IA'>IA</option><option value='ID'>ID</option><option value='IL'>IL</option><option value='IN'>IN</option><option value='KS'>KS</option><option value='KY'>KY</option><option value='LA'>LA</option><option value='MA'>MA</option><option value='MD'>MD</option><option value='ME'>ME</option><option value='MI'>MI</option><option value='MN'>MN</option><option value='MO'>MO</option><option value='MS'>MS</option><option value='MT'>MT</option><option value='NC'>NC</option><option value='ND'>ND</option><option value='NE'>NE</option><option value='NH'>NH</option><option value='NJ'>NJ</option><option value='NM'>NM</option><option value='NV'>NV</option><option value='NY'>NY</option><option value='OH'>OH</option><option value='OK'>OK</option><option value='OR'>OR</option><option value='PA'>PA</option><option value='RI'>RI</option><option value='SC'>SC</option><option value='SD'>SD</option><option value='TN'>TN</option><option value='TX'>TX</option><option value='UT'>UT</option><option value='VA'>VA</option><option value='VT'>VT</option><option value='WA'>WA</option><option value='WI'>WI</option><option value='WV'>WV</option><option value='WY'>WY</option></select>
+                    <p id="stateErrorContainer" class="text-danger text-right" style="height:10px"></p>   
+                </div>
+                <div class="form-group" style="vertical-align:top">
+                    <button type="submit" class="btn btn-warning" id="submit">Submit</button>
+                </div>
+                <div class="pull-right" style="height:10%">
+                    <img width="150" height="40" alt="Zillow Real Estate Search" src="http://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/logos/Zillowlogo_150x40_rounded.gif">
+                </div>                
+            </form>
+        </div>
+		<div style="display:none" id="response_error"></div>
+		<div class="tab-content" style="display:none" id="response_content">
+			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+			<li class="active" id="bs"><a href="#basic_info" data-toggle="tab">Basic Info</a></li>
+			<li id="hz"><a href="#historical_zestimates" data-toggle="tab">Historical Zestimates</a></li>
+			</ul>
+			<div role="tabpanel" class="tab-pane active" id="basic_info"></div>
+			<div role="tabpanel" class="tab-pane" id="historical_zestimates" style="background-color:white;border:1px solid;border-radius:3px;border-color:#f0ad4e;box-shadow:-2.5px 2px 6px -4px rgba(243, 178, 73, 0.4) inset">
+				<div id="nochart" style="display:none">
+				</div>
+				<div id="historical_zestimates_carousel" class="carousel slide" data-ride="carousel" style='display:none'>
+  					<!-- Indicators -->
+  					<ol class="carousel-indicators">
+						<li data-target="#historical_zestimates_carousel" data-slide-to="0" class="active"></li>
+						<li data-target="#historical_zestimates_carousel" data-slide-to="1"></li>
+						<li data-target="#historical_zestimates_carousel" data-slide-to="2"></li>
+				  	</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active" id="1year" style="padding-bottom:40px">
+						</div>
+						<div class="item" id="5years" style="padding-bottom:40px">
+						</div>
+						<div class="item" id="10years" style="padding-bottom:40px">
+						</div>	
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#historical_zestimates_carousel" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#historical_zestimates_carousel" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class = 'row' style='display:none' id='footer'>
+			<p class='text-center' style='color:white'>&copy; Zillow, Inc., 2006-2014. Use is subject to <a href='http://www.zillow.com/corp/Terms.htm' target='_blank'>Terms of Use</a><br><a href='http://www.zillow.com/wikipages/What-is-a-Zestimate/' target='_blank'>What is a Zestimate?</a></p>";
+		</div>
+    </div>
+	<script src="jquery/lib/jquery.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="jquery/dist/jquery.validate.js"></script>
+	<script src="hw8.js"></script>
+    <noscript>
+</body>
+</html>
